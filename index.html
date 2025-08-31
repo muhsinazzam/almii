@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenangan Kita</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    header {
+      padding: 20px 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 1.8em;
+      color: #fff;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1em;
+      color: #fff;
+    }
+
+    .slideshow-container {
+      position: relative;
+      max-width: 90%;
+      margin: 15px auto;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0px 5px 20px rgba(0,0,0,0.3);
+      background: #fff;
+    }
+
+    .slide {
+      display: none;
+      position: relative;
+      animation: fade 1s ease-in-out;
+    }
+
+    .slide img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px 15px 0 0;
+      display: block;
+    }
+
+    .caption {
+      padding: 12px;
+      font-size: 1em;
+      background: #fff;
+      border-radius: 0 0 15px 15px;
+    }
+
+    @keyframes fade {
+      from {opacity: .4} 
+      to {opacity: 1}
+    }
+
+    footer {
+      padding: 10px;
+      color: #fff;
+      font-size: 0.9em;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Efek hati jatuh */
+    .heart {
+      position: fixed;
+      top: -10px;
+      color: red;
+      font-size: 18px;
+      animation: fall linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    /* Responsif untuk layar kecil */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+      .caption {
+        font-size: 0.9em;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💖 Kenangan Indah Kita 💖</h1>
+    <p>Satu per satu kenangan manis muncul untuk kita kenang...</p>
+  </header>
+
+  <div class="slideshow-container">
+    <div class="slide">
+      <img src="almi4.jpeg" alt="Kenangan 1">
+      <div class="caption">📸 Foto pertama yang kamu kasih momen tak terlupakan 🥰</div>
+    </div>
+
+    <div class="slide">
+      <img src="almi5.jpeg" alt="Kenangan 2">
+      <div class="caption">almi lagi mode jamet💕</div>
+    </div>
+
+    <div class="slide">
+      <img src="almi3.jpeg" alt="Kenangan 3">
+      <div class="caption">💖</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>✨ Dibuat dengan cinta untukmu ✨</p>
+  </footer>
+
+  <!-- Musik latar -->
+  <audio id="bg-music" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <script>
+    // Slideshow otomatis
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      slides[slideIndex-1].style.display = "block";  
+      setTimeout(showSlides, 4000); // Ganti slide tiap 4 detik
+    }
+
+    // Efek hati jatuh
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
